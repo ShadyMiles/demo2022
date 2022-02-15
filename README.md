@@ -5,7 +5,7 @@ Topology
 
 Назначение имен хостов и адресов
 
-*RTR-L cisco
+#RTR-L cisco
 en
 conf t
 hostname RTR-L
