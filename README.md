@@ -79,3 +79,4 @@ Rename-Computer -NewName CLI
 $GetIndex = Get-NetAdapter
 New-NetIPAddress -InterfaceIndex $GetIndex.ifIndex -IPAddress 3.3.3.10 -PrefixLength 24 -DefaultGateway 3.3.3.1
 Set-DnsClientServerAddress -InterfaceIndex $GetIndex.ifIndex -ServerAddresses ("3.3.3.1")
+
