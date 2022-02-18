@@ -261,3 +261,19 @@ DNAT RTR-R
 ```
 ip nat inside source static tcp 172.16.100.100 22 5.5.5.100 2244
 ```
+SSH WEB-L
+```
+apt-cdrom add
+apt install -y openssh-server ssh
+
+systemctl start sshd
+systemctl enable ssh
+```
+SSH WEB-R
+```
+apt-cdrom add
+apt install -y openssh-server ssh
+
+systemctl start sshd
+systemctl enable ssh
+```
