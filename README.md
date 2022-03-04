@@ -709,6 +709,8 @@ scp -P 2244 'root@5.5.5.100:/opt/share/ca.cer' C:\Users\user\Desktop\
 ![image](https://user-images.githubusercontent.com/63335518/156727978-cb5b8e59-3ac4-47eb-b2cf-312cd8dd9e4a.png)
 ![image](https://user-images.githubusercontent.com/63335518/156728031-9ac5e7e4-829d-407a-93da-07b7bb3823bd.png)
 ![image](https://user-images.githubusercontent.com/63335518/156728071-3d8a34ad-a8d5-4027-9371-a15b21823462.png)
+![image](https://user-images.githubusercontent.com/63335518/156728351-fb2c0a82-a75c-4697-867f-631c5f10ce1a.png)
+
 
 ```
 scp -P 2244 'root@5.5.5.100:/opt/share/cer.cer' C:\Users\user\Desktop\
