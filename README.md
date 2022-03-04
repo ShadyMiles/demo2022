@@ -226,8 +226,8 @@ RTR-L ACL
 ip access-list extended Lnew
 
 permit tcp any any established
-permit udp host 4.4.4.100 eq 53 any
-permit tcp host 4.4.4.100 eq 53 any
+permit udp any host 4.4.4.100 eq 53
+permit tcp any host 4.4.4.100 eq 53
 permit udp host 5.5.5.1 eq 123 any
 permit tcp any host 4.4.4.100 eq 80 
 permit tcp any host 4.4.4.100 eq 443 
@@ -666,3 +666,52 @@ openssl pkcs12 -nodes -nokeys -in www.pfx -out www.cer
 cp /opt/share/www.key /etc/nginx/www.key
 cp /opt/share/www.cer /etc/nginx/www.cer
 ```
+```
+nano /etc/nginx/snippets/snakeoil.conf
+```
+![image](https://user-images.githubusercontent.com/63335518/156516846-a81a91e5-9959-4ff2-9948-a99e7a12db25.png)
+```
+nano /etc/nginx/sites-available/default
+```
+```
+upstream backend { 
+ server 192.168.100.100:8080 fail_timeout=25; 
+ server 172.16.100.100:8080 fail_timeout=25; 
+} 
+ 
+server { 
+    listen 443 ssl default_server; 
+    include /etc/ngnix/snippets/snakeoil.conf;
+
+    server_name www.demo.wsr; 
+
+ location / { 
+  proxy_pass http://backend ;
+ } 
+}
+
+server { 
+   listen 80  default_server; 
+  server_name _; 
+  return 301 https://www.demo.wsr;
+
+}
+```
+```
+systemctl reload nginx
+```
+CLI ssl
+```
+scp -P 2244 'root@5.5.5.100:/opt/share/ca.cer' C:\Users\user\Desktop\
+```
+![image](https://user-images.githubusercontent.com/63335518/156727841-c17c654c-3694-49fc-b579-51427f310f8c.png)
+
+![image](https://user-images.githubusercontent.com/63335518/156727978-cb5b8e59-3ac4-47eb-b2cf-312cd8dd9e4a.png)
+![image](https://user-images.githubusercontent.com/63335518/156728031-9ac5e7e4-829d-407a-93da-07b7bb3823bd.png)
+![image](https://user-images.githubusercontent.com/63335518/156728071-3d8a34ad-a8d5-4027-9371-a15b21823462.png)
+
+```
+scp -P 2244 'root@5.5.5.100:/opt/share/cer.cer' C:\Users\user\Desktop\
+```
+![image](https://user-images.githubusercontent.com/63335518/156728100-0e3affd8-640e-4c11-ac66-3cf0ad978372.png)
+
